@@ -1,5 +1,8 @@
 ---
+import Hero from "@layouts/Hero"
+import Feature from "@layouts/Feature"
 
+import BuiltWith from "@components/BuiltWith"
 ---
 
 <html lang="en">
@@ -8,9 +11,14 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>dipc</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Hero
+			title="dipc"
+			description="Convert your favorite images and wallpapers with your favorite color palettes/themes"
+		/>
+		<Feature />
+		<BuiltWith />
 	</body>
 </html>
