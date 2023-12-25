@@ -1,3 +1,5 @@
+import dipcExamples from "@assets/dipc_examples.png";
+
 import "@styles/styles.scss";
 
 const Feature = () => {
@@ -119,8 +121,8 @@ const Feature = () => {
             </div>
           </div>
           <img
-            src="https://github.com/doprz/dipc/raw/main/images/dipc_examples.png"
-            alt="Product screenshot"
+            src={dipcExamples.src}
+            alt="dipc examples"
             class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 animateEnter"
             style={{ "--stagger": "1" }}
             width="2432"
