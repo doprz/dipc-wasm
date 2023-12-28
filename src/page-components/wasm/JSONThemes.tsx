@@ -117,12 +117,12 @@ const JSONThemes = () => {
     <div class="mt-8">
       <div class="mt-8 bg-gray-900 rounded-lg">
         <div class="pt-12 pb-4">
-          <div class="relative border-b-2 border-gray-500 pb-0">
-            <div class="flex justify-between items-center">
+          <div class="relative border-b-2 border-gray-500 sm:pb-0">
+            <div class="md:flex md:justify-between md:items-center">
               <h3 class="text-base font-semibold text-gray-300">
                 {selectedPalette()}
               </h3>
-              <div class="mt-0 top-3 right-0 absolute flex flex-row space-x-3">
+              <div class="flex mt-3 space-x-3 md:mt-0 md:top-3 md:right-0 md:absolute">
                 <button
                   type="button"
                   class="inline-flex rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 gap-2"
