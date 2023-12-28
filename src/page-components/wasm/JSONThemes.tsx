@@ -30,6 +30,7 @@ const renderColorPalettePicture = (colorPaletteName: ColorPaletteName) => {
 type Props = {
   // eslint-disable-next-line no-unused-vars
   handleUpdatePaletteVariations: (colors: string[]) => void;
+  handleDownloadImage: () => void;
 };
 
 const JSONThemes = (props: Props) => {
@@ -153,6 +154,7 @@ const JSONThemes = (props: Props) => {
                 <button
                   type="button"
                   class="inline-flex rounded-md bg-cyan-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 gap-2"
+                  onClick={() => props.handleDownloadImage()}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

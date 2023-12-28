@@ -5,10 +5,12 @@ import JSONThemes from "./JSONThemes";
 
 import { default as wasm, convert_data_url_to_rgba8 } from "@wasm/dipc_wasm";
 import { hexColorsToRgb } from "@utils/color";
+import { downloadImage } from "@utils/download";
 
 import "@styles/styles.scss";
 
 const WasmPage = () => {
+  const [fileName, setFileName] = createSignal<string | null>(null);
   const [imageDataUrl, setImageDataUrl] = createSignal<string | null>(null);
   const [convertedImageDataUrl, setConvertedImageDataUrl] = createSignal<
     string | null
@@ -25,18 +27,16 @@ const WasmPage = () => {
     });
   });
 
-  const handleUpdatePaletteVariations = (colors: string[]) => {
-    const colorsRGB = hexColorsToRgb(colors);
-    const colorsRGBFlat = colorsRGB.flat();
-    setSelectedPaletteVariationColorsRGBFlat(colorsRGBFlat);
-
-    // TODO: This is a tmp way to get the image to re-render
-    if (imageDataUrl()) {
-      handleImageUpload(imageDataUrl()!);
+  const handleDownloadImage = () => {
+    console.log("handleDownloadImage called");
+    if (convertedImageDataUrl()) {
+      console.log("Downloading image...");
+      downloadImage(convertedImageDataUrl()!, fileName()!);
     }
   };
 
-  const handleImageUpload = (dataUrl: string) => {
+  const handleImageUpload = (fileName: string, dataUrl: string) => {
+    console.log("fileName:", fileName);
     console.log("dataUrl:", dataUrl);
     setImageDataUrl(dataUrl);
 
@@ -46,10 +46,22 @@ const WasmPage = () => {
       new Uint8Array(selectedPaletteVariationColorsRGBFlat())
     );
 
+    setFileName(fileName);
     setConvertedImageDataUrl(image);
 
     console.log("original:", dataUrl);
     console.log("converted:", image);
+  };
+
+  const handleUpdatePaletteVariations = (colors: string[]) => {
+    const colorsRGB = hexColorsToRgb(colors);
+    const colorsRGBFlat = colorsRGB.flat();
+    setSelectedPaletteVariationColorsRGBFlat(colorsRGBFlat);
+
+    // TODO: This is a tmp way to get the image to re-render
+    if (imageDataUrl()) {
+      handleImageUpload(imageDataUrl()!, imageDataUrl()!);
+    }
   };
 
   return (
@@ -74,6 +86,7 @@ const WasmPage = () => {
         </Show>
         <JSONThemes
           handleUpdatePaletteVariations={handleUpdatePaletteVariations}
+          handleDownloadImage={handleDownloadImage}
         />
       </div>
     </div>

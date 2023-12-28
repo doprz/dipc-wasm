@@ -1,6 +1,6 @@
 type Props = {
   // eslint-disable-next-line no-unused-vars
-  onImageUpload: (imageDataUrl: string) => void;
+  onImageUpload: (fileName: string, dataUrl: string) => void;
   uploadDescription?: string;
 };
 
@@ -8,14 +8,15 @@ const FileUpload = (props: Props) => {
   const handleFileChange = (event: Event) => {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
+    const fileName = file?.name;
 
-    if (file) {
+    if (file && fileName) {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         const dataUrl = e.target?.result as string;
 
         // Pass the image dataUrl to the parent component
-        props.onImageUpload(dataUrl);
+        props.onImageUpload(fileName, dataUrl);
       };
       reader.readAsDataURL(file);
     }
