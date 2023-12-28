@@ -27,7 +27,12 @@ const renderColorPalettePicture = (colorPaletteName: ColorPaletteName) => {
   );
 };
 
-const JSONThemes = () => {
+type Props = {
+  // eslint-disable-next-line no-unused-vars
+  handleUpdatePaletteVariations: (colors: string[]) => void;
+};
+
+const JSONThemes = (props: Props) => {
   const [jsonData, setJsonData] = createSignal<jsonFileData[]>([]);
 
   const [selectedPalette, setSelectedPalette] =
@@ -58,6 +63,7 @@ const JSONThemes = () => {
     setSelectedPaletteVariations(variations);
 
     setSelectedPaletteVariationColors(colors);
+    props.handleUpdatePaletteVariations(colors);
     // console.log(colors);
   };
 
