@@ -29,10 +29,10 @@ const Hero = (props: Props) => {
                 Get started
               </a>
               <a
-                href="#"
+                href="/wasm"
                 class="text-sm font-semibold leading-6 text-white transition-transform transform md:hover:translate-x-4"
               >
-                Learn more <span aria-hidden="true">→</span>
+                Try wasm <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>

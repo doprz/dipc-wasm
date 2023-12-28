@@ -1,0 +1,22 @@
+---
+import WasmPage from "@page-components/wasm/WasmPage";
+import Footer from "@components/Footer";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/dipc_dark.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Convert your favorite images and wallpapers with your favorite color palettes/themes"
+    />
+    <title>dipc</title>
+  </head>
+  <body>
+    <WasmPage client:load />
+    <Footer />
+  </body>
+</html>
