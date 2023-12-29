@@ -1,0 +1,31 @@
+{
+  "name": "dipc-wasm",
+  "collaborators": [
+    "doprz"
+  ],
+  "description": "Convert your favorite images and wallpapers with your favorite color palettes/themes",
+  "version": "0.1.0",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doprz/dipc"
+  },
+  "files": [
+    "dipc_wasm_bg.wasm",
+    "dipc_wasm.js",
+    "dipc_wasm.d.ts"
+  ],
+  "module": "dipc_wasm.js",
+  "homepage": "https://github.com/doprz/dipc",
+  "types": "dipc_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "keywords": [
+    "cli",
+    "graphics",
+    "utility",
+    "image",
+    "tool"
+  ]
+}
