@@ -85,6 +85,7 @@ const WasmPage = () => {
           </div>
         </Show>
         <JSONThemes
+          onImageUpload={handleImageUpload}
           handleUpdatePaletteVariations={handleUpdatePaletteVariations}
           handleDownloadImage={handleDownloadImage}
         />

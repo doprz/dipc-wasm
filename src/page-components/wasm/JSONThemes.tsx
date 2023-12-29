@@ -29,6 +29,8 @@ const renderColorPalettePicture = (colorPaletteName: ColorPaletteName) => {
 
 type Props = {
   // eslint-disable-next-line no-unused-vars
+  onImageUpload: (fileName: string, dataUrl: string) => void;
+  // eslint-disable-next-line no-unused-vars
   handleUpdatePaletteVariations: (colors: string[]) => void;
   handleDownloadImage: () => void;
 };
@@ -44,6 +46,29 @@ const JSONThemes = (props: Props) => {
     createSignal<string[] | null>(null);
 
   const [activeTab, setActiveTab] = createSignal<number>(0);
+
+  let uploadFileButtonRef: HTMLButtonElement | undefined = undefined;
+
+  const handleFileUploadButtonClick = () => {
+    uploadFileButtonRef!.click();
+  };
+
+  const handleFileChange = (event: Event) => {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    const fileName = file?.name;
+
+    if (file && fileName) {
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        const dataUrl = e.target?.result as string;
+
+        // Pass the image dataUrl to the parent component
+        props.onImageUpload(fileName, dataUrl);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const updatePaletteVariations = (
     colorPalette: ColorPaletteName | null = selectedPalette(),
@@ -130,9 +155,16 @@ const JSONThemes = (props: Props) => {
                 {selectedPalette()}
               </h3>
               <div class="flex mt-3 space-x-3 md:mt-0 md:top-3 md:right-0 md:absolute">
+                <input
+                  type="file"
+                  ref={uploadFileButtonRef}
+                  onChange={handleFileChange}
+                  class="hidden"
+                />
                 <button
                   type="button"
                   class="inline-flex rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 gap-2"
+                  onClick={handleFileUploadButtonClick}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
