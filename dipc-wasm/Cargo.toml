@@ -2,6 +2,13 @@
 name = "dipc-wasm"
 version = "0.1.0"
 edition = "2021"
+description = "Convert your favorite images and wallpapers with your favorite color palettes/themes"
+authors = ["doprz"]
+homepage = "https://github.com/doprz/dipc"
+repository = "https://github.com/doprz/dipc"
+license = "MIT OR Apache-2.0"
+keywords = ["cli", "graphics", "utility", "image", "tool"]
+categories = ["command-line-interface", "command-line-utilities", "graphics", "multimedia::images", "rendering"]
 
 [lib]
 crate-type = ["cdylib"]
